@@ -1,2 +1,4 @@
 # don't commit certificates and keys
 *.pem
+# don't commit private info
+server-instances.md

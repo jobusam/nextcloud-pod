@@ -27,6 +27,10 @@ echo "Install contacts"
 podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:install contacts
 echo "Install calendar"
 podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:install calendar
+echo "Install mail client"
+podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:install mail
+echo "Install groupfolders to create folders for specific groups"
+podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:install groupfolders
 echo "Install talk (spreed)"
 podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:install spreed
 echo "Next Bugfix. Due to errors in spreed installation spreed must be explicitly enabled"
