@@ -23,15 +23,26 @@ awk '/timeout/{gsub(/10/, '100')};{print}' > /var/www/html/lib/private/App/AppSt
 mv /var/www/html/lib/private/App/AppStore/Fetcher/Fetcher.php.tmp /var/www/html/lib/private/App/AppStore/Fetcher/Fetcher.php"
 echo "Bug was fixed!"
 echo "Now installing apps..."
+
 echo "Install contacts"
 podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:install contacts
+
 echo "Install calendar"
 podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:install calendar
+
 echo "Install mail client"
 podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:install mail
+
 echo "Install groupfolders to create folders for specific groups"
 podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:install groupfolders
+
 echo "Install talk (spreed)"
 podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:install spreed
 echo "Next Bugfix. Due to errors in spreed installation spreed must be explicitly enabled"
 podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:enable spreed
+
+echo "Install drawio for creating diagrams"
+podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:install drawio
+
+echo "Install onlyoffice for processing office documents"
+podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:install onlyoffice
