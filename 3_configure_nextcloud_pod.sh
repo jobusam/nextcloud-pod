@@ -24,6 +24,8 @@ mv /var/www/html/lib/private/App/AppStore/Fetcher/Fetcher.php.tmp /var/www/html/
 echo "Bug was fixed!"
 echo "Now installing apps..."
 
+exit 0
+
 echo "Install contacts"
 podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:install contacts
 

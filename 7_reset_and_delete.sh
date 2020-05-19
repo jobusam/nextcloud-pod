@@ -12,8 +12,10 @@ then
     exit 1
 fi
 
-echo "Stop pod and delete containers"
+echo "Stop pods and delete containers"
 podman pod rm -f $POD
+podman pod rm -f $DOC_SERVER_POD
+
 
 echo "Delete data dirs by changing into container namespace with buildah unshare"
 # otherwise it's not possible to delete the data without root, see https://podman.io/blogs/2018/10/03/podman-remove-content-homedir.html
