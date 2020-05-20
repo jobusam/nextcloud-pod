@@ -5,7 +5,7 @@ source 0_env.sh
 echo "Create a pod called $POD and open external port $EXT_PORT for nextcloud with https"
 
 # only export https port of reverse proxy (port 443 is also configured in nginx.conf)
-podman pod create -n $POD -p $EXT_PORT:443
+podman pod create -n $POD -p $EXT_PORT:443 --add-host=$DOMAIN:$LOCAL_IP_OF_EXTERNAL_IF
 
 echo "Start Postgres and backup data on $POSTGRES_DATA_DIR"
 podman run -d --pod $POD -v $POSTGRES_DATA_DIR:/var/lib/postgresql/data:Z \

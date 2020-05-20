@@ -4,9 +4,6 @@
 # Please overwrite following values and credentials and mail accounts!
 
 # External Domain (under the server is reachable from the clients)
-# Additionally this domain should be mapped to the externel server ip so that every pod can reach them.
-# this is necessary because nextcloud and only office document server must be accessible from each other.
-# for testing you can also map the hostname to your host external ip in /etc/hosts (don't map to the 127.0.0.1: this won't work)
 DOMAIN=nextcloud-host
 
 # port for nextcloud
@@ -15,6 +12,11 @@ EXT_PORT=9090
 
 # port for document server (only office)
 EXT_PORT_DOC_SERVER=8080
+
+# get the local ip of the external host interface. It's necessary to cummunicate between
+# two podman pods (nextcloud and only office) and "localhost" will not work!
+EXTERNAL_IF=`route | grep '^default' | grep -o '[^ ]*$'`
+LOCAL_IP_OF_EXTERNAL_IF=`ip -4 addr show $EXTERNAL_IF | grep -oP "(?<=inet ).*(?=/)"`
 
 # administrator credentials for nextcloud
 # TODO: OVERWRITE these values!!!
