@@ -2,3 +2,4 @@
 *.pem
 # don't commit private info
 server-instances.md
+.vscode

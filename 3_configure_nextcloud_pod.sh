@@ -24,8 +24,6 @@ mv /var/www/html/lib/private/App/AppStore/Fetcher/Fetcher.php.tmp /var/www/html/
 echo "Bug was fixed!"
 echo "Now installing apps..."
 
-exit 0
-
 echo "Install contacts"
 podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:install contacts
 
@@ -45,6 +43,3 @@ podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:enable spreed
 
 echo "Install drawio for creating diagrams"
 podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:install drawio
-
-echo "Install onlyoffice for processing office documents"
-podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:install onlyoffice

@@ -22,7 +22,7 @@ podman run -d --pod $DOC_SERVER_POD -v $NGINX_DATA_DIR/conf/nginx.conf:/etc/ngin
 DOC_SERVER_URL="https://$DOMAIN:$EXT_PORT_DOC_SERVER/"
 
 echo "Configure document server url in nextcloud to $DOC_SERVER_URL with secret key $JWT_SECRET"
-podman exec --user www-data seamless-nextcloud php occ config:app:set onlyoffice DocumentServerUrl --value $DOC_SERVER_URL
-podman exec --user www-data seamless-nextcloud php occ config:app:set onlyoffice jwt_secret --value $JWT_SECRET
+podman exec --user www-data $NEXTCLOUD_CONTAINER php occ config:app:set onlyoffice DocumentServerUrl --value $DOC_SERVER_URL
+podman exec --user www-data $NEXTCLOUD_CONTAINER php occ config:app:set onlyoffice jwt_secret --value $JWT_SECRET
 
 

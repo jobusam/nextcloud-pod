@@ -42,16 +42,16 @@ BASE_DIR=$base_dir_of_script/data
 # Following environment parameters can be changed but it's not necessary
 
 #oci image versions:
-NEXTCLOUD_VERSION=18.0.3
-POSTGRES_VERSION=12.2-alpine
-NGINX_VERSION=1.17.9-alpine
+NEXTCLOUD_VERSION=18.0.4
+POSTGRES_VERSION=12.3-alpine
+NGINX_VERSION=1.17.10-alpine
 ONLY_OFFICE_VERSION=5.5.1.76
-LETSENCRYPT_VERSION=v1.2.0
+LETSENCRYPT_VERSION=v1.4.0
 
 # name of the nextcloud pod
 POD=nextpod
 # name of the nextcloud-container
-NEXTCLOUD_CONTAINER=seamless-nextcloud
+NEXTCLOUD_CONTAINER=nextcloud
 # use HTTPS. The value is set in Nextcloud config
 # Keep in mind:you also have to change the nginx.conf if you don't use TLS
 PROTOCOL=https
