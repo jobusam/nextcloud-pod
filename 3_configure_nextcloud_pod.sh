@@ -22,7 +22,7 @@ echo "Install recommended apps in nextcloud"
 
 echo "For installing apps fix a bug before (see https://help.nextcloud.com/t/appstore-is-empty/65078)"
 echo "Increase timeout from 10 sec to 100 secs in file /var/www/html/lib/private/App/AppStore/Fetcher/Fetcher.php"
-podman exec --user www-data seamless-nexcloud /bin/bash -c "
+podman exec --user www-data $NEXTCLOUD_CONTAINER /bin/bash -c "
 cat /var/www/html/lib/private/App/AppStore/Fetcher/Fetcher.php |
 awk '/timeout/{gsub(/10/, '100')};{print}' > /var/www/html/lib/private/App/AppStore/Fetcher/Fetcher.php.tmp &&
 mv /var/www/html/lib/private/App/AppStore/Fetcher/Fetcher.php.tmp /var/www/html/lib/private/App/AppStore/Fetcher/Fetcher.php"
