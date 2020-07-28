@@ -44,11 +44,11 @@ BASE_DIR=$base_dir_of_script/data
 # Following environment parameters can be changed but it's not necessary
 
 #oci image versions:
-NEXTCLOUD_VERSION=18.0.4
+NEXTCLOUD_VERSION=19.0.1
 POSTGRES_VERSION=12.3-alpine
-NGINX_VERSION=1.17.10-alpine
-ONLY_OFFICE_VERSION=5.5.1.76
-LETSENCRYPT_VERSION=v1.4.0
+NGINX_VERSION=1.19.1-alpine
+ONLY_OFFICE_VERSION=5.5.3.39
+LETSENCRYPT_VERSION=v1.6.0
 
 # name of the nextcloud pod
 POD=nextpod

@@ -9,8 +9,9 @@ podman exec --user www-data $NEXTCLOUD_CONTAINER php occ app:install onlyoffice
 
 
 echo "Setup Only Office on Port 8080"
-podman pod create -n $DOC_SERVER_POD -p $EXT_PORT_DOC_SERVER:443 --add-host=$DOMAIN:$LOCAL_IP_OF_EXTERNAL_IF
-#echo "Setup Only Office on port 80"
+# the -add-hosts option doesn't work in older podman version (use it in centos 8 and above)
+podman pod create -n $DOC_SERVER_POD -p $EXT_PORT_DOC_SERVER:443 #--add-host=$DOMAIN:$LOCAL_IP_OF_EXTERNAL_IF
+
 # a data dir for only office is not necessary
 podman run -d --pod $DOC_SERVER_POD -e JWT_ENABLED='true' -e JWT_SECRET=$JWT_SECRET \
 --restart=always --name=only-office onlyoffice/documentserver:$ONLY_OFFICE_VERSION

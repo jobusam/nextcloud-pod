@@ -5,3 +5,10 @@ that uses TLS. All containers are deployed together as pod an therefore share th
 namespace, host, etc.
 
 TODO: How to setup
+
+
+## Backup
+To backup the local data run following command as root user in data directory:
+````
+$ cp -rp data/ data_backup_08.6.2020
+````

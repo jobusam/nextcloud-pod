@@ -13,6 +13,11 @@ podman exec --user www-data $NEXTCLOUD_CONTAINER php occ config:system:set trust
 podman exec --user www-data $NEXTCLOUD_CONTAINER php occ config:system:set overwritehost --value=$DOMAIN:$EXT_PORT
 podman exec --user www-data $NEXTCLOUD_CONTAINER php occ config:system:set overwriteprotocol --value=$PROTOCOL
 
+# convert sqlite db to postgres. Because it doesn't work with the predefined nextcloud environment variables.
+# Therefore it must be manually executed after the first installation...
+echo "Convert current default sqlite db to postgresql"
+podman exec --user www-data $NEXTCLOUD_CONTAINER php occ db:convert-type --all-apps pgsql $DB_USER localhost $DB_NAME
+
 echo "Install recommended apps in nextcloud"
 
 echo "For installing apps fix a bug before (see https://help.nextcloud.com/t/appstore-is-empty/65078)"
